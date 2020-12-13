@@ -1,22 +1,22 @@
 <?php
+
 namespace Ubiquity\attributes;
 
 use Ubiquity\annotations\AnnotationsEngineInterface;
+use Ubiquity\attributes\items\JoinTable;
+use Ubiquity\attributes\items\ManyToMany;
+use Ubiquity\attributes\items\ManyToOne;
+use Ubiquity\attributes\items\OneToMany;
 
 class AttributesEngine implements AnnotationsEngineInterface {
 
-	/**
-	 *
-	 * @var array
-	 */
-	protected $register;
+	protected array $register;
 
-	protected function attributesNewInstances(array $attributes) {
+	protected function attributesNewInstances(array $attributes): array {
 		$result = [];
 		foreach ($attributes as $attribute) {
 			$result[] = $attribute->newInstance();
 		}
-
 		return $result;
 	}
 
@@ -38,8 +38,12 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	public function start(string $cacheDirectory): void {
 		$this->register = [
 			'id' => Id::class,
-			'column'=>Column::class,
-			'joinColumn'=>JoinColumn::class,
+			'column' => Column::class,
+			'joinColumn' => JoinColumn::class,
+			'joinTable' => JoinTable::class,
+			'manyToMany' => ManyToMany::class,
+			'manyToOne' => ManyToOne::class,
+			'oneToMany' => OneToMany::class,
 			'route' => Route::class
 		];
 	}
@@ -48,6 +52,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		return $this->register[$key] ?? null;
 	}
 
-	public function registerAnnotations(array $nameClasses): void {}
+	public function registerAnnotations(array $nameClasses): void {
+	}
 }
 

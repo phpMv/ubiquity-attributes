@@ -13,10 +13,11 @@ namespace Ubiquity\attributes\items;
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class JoinColumn extends Column {
-	public $className;
-	public $referencedColumnName;
+	public string $className;
+	public string $referencedColumnName;
 	public function __construct(string $name,string $className,string $referencedColumnName){
-		
-		
+		parent::__construct($name);
+	    $this->className=$className;
+		$this->referencedColumnName=$referencedColumnName;
 	}
 }

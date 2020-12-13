@@ -23,11 +23,11 @@ use Attribute;
 class Column extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public $name;
+	public string $name;
 
-	public $nullable = false;
+	public bool $nullable = false;
 
-	public $dbType;
+	public string $dbType;
 
 	public function __construct(string $name, bool $nullable = false, string $dbType = '') {
 		$this->name = $name;

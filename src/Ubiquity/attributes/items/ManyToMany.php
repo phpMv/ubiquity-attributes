@@ -19,9 +19,9 @@ use Attribute;
 class ManyToMany extends BaseAttibute {
 	use BaseAnnotationTrait;
 	
-	public $targetEntity;
-	public $inversedBy;
-	public $mappedBy;
+	public string $targetEntity;
+	public ?string $inversedBy;
+	public ?string $mappedBy;
 	
 	public function __construct(string $targetEntity,?string $inversedBy=null,?string $mappedBy=null) {
 		$this->targetEntity=$targetEntity;

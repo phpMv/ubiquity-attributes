@@ -20,11 +20,7 @@ use Ubiquity\annotations\BaseAnnotationTrait;
 class Database extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	/**
-	 *
-	 * @var string
-	 */
-	public $name;
+	public string $name;
 
 	public function __construct(string $name) {
 		$this->name = $name;

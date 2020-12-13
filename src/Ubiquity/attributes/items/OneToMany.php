@@ -17,9 +17,8 @@ use Attribute;
 class OneToMany extends BaseAttribute {
 	use BaseAnnotationTrait;
 	
-	public $mappedBy;
-	public $fetch;
-	public $className;
+	public string $mappedBy;
+	public string $className;
 	
 	public function __construct(string $mappedBy,string $className){
 		$this->mappedBy=$mappedBy;

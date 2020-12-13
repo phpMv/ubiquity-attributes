@@ -19,9 +19,9 @@ use Attribute;
 class JoinTable extends BaseAttribute {
 	use BaseAnnotationTrait;
 	
-	public $name;
-	public $joinColumns;
-	public $inverseJoinColumns;
+	public string $name;
+	public string $joinColumns;
+	public string $inverseJoinColumns;
 	
 	public function __construct(string $name,string $joinColumns,string $inverseJoinColumns){
 		$this->name=$name;
