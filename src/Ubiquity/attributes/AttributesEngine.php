@@ -1,9 +1,9 @@
 <?php
 namespace Ubiquity\attributes;
 
-use Ubiquity\annotations\AnnotationsInterface;
+use Ubiquity\annotations\AnnotationsEngineInterface;
 
-class AttributesEngine implements AnnotationsInterface {
+class AttributesEngine implements AnnotationsEngineInterface {
 
 	/**
 	 *
