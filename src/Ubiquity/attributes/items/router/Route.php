@@ -1,9 +1,9 @@
 <?php
 namespace Ubiquity\attributes\items\router;
 
-use \Attribute;
+use Attribute;
 use Ubiquity\annotations\BaseAnnotationTrait;
-use Ubiquity\attributes\BaseAttribute;
+use Ubiquity\attributes\items\BaseAttribute;
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 class Route extends BaseAttribute{
