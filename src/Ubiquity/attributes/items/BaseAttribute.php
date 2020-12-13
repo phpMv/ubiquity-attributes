@@ -1,4 +1,5 @@
 <?php
+
 namespace Ubiquity\attributes\items;
 
 use Ubiquity\annotations\BaseAnnotationTrait;
@@ -12,5 +13,11 @@ use Ubiquity\annotations\BaseAnnotationTrait;
  */
 abstract class BaseAttribute {
 	use BaseAnnotationTrait;
+
+	public function __toString() {
+		$extsStr = $this->asAnnotation();
+		$className = (new \ReflectionClass($this))->getShortName();
+		return '#[' . \lcfirst($className) . $extsStr . ']';
+	}
 }
 
