@@ -3,6 +3,7 @@
 namespace Ubiquity\attributes\items;
 
 use Ubiquity\annotations\BaseAnnotationTrait;
+use Ubiquity\utils\base\UArray;
 
 /**
  * Ubiquity\attributes$BaseAttribute
@@ -14,10 +15,15 @@ use Ubiquity\annotations\BaseAnnotationTrait;
 abstract class BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public function __toString() {
+	protected function asAnnotation(): string {
+		$fields = $this->getPropertiesAndValues();
+		return UArray::asPhpAttribute($fields);
+	}
+
+	public function __toString(): string {
 		$extsStr = $this->asAnnotation();
 		$className = (new \ReflectionClass($this))->getShortName();
-		return '#[' . \lcfirst($className) . $extsStr . ']';
+		return '#[' . $className . $extsStr . ']';
 	}
 }
 
