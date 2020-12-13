@@ -13,6 +13,6 @@ use Attribute;
  * @version 1.0.0
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class ManyToOneAnnotation extends BaseAttribute {
+class ManyToOne extends BaseAttribute {
 	use BaseAnnotationTrait;
 }
