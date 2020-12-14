@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Dependency injection annotations
+ * Dependency injection attributes
  */
 
 namespace Ubiquity\attributes\items\di;
