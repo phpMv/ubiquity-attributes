@@ -10,7 +10,7 @@ use Ubiquity\attributes\items\OneToMany;
 
 class AttributesEngine implements AnnotationsEngineInterface {
 
-	protected array $register;
+	protected static array $registry;
 
 	protected function attributesNewInstances(array $attributes): array {
 		$result = [];
@@ -39,7 +39,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	}
 
 	public function start(string $cacheDirectory): void {
-		$this->register = [
+		self::$registry = [
 			'id' => Id::class,
 			'column' => Column::class,
 			'joinColumn' => JoinColumn::class,
@@ -52,11 +52,20 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	}
 
 	public function getAnnotationByKey(?string $key = null): ?string {
-		return $this->register[$key] ?? null;
+		return self::$registry[$key] ?? null;
 	}
 
 	public function registerAnnotations(array $nameClasses): void {
-		\array_merge($this->register, $nameClasses);
+		\array_merge(self::$registry, $nameClasses);
+	}
+
+	public static function getAnnotation(string $key, array $parameters = []): ?object {
+		if (isset(self::$registry[$key])) {
+			$classname = self::$registry[$key];
+			$reflect = new \ReflectionClass($classname);
+			return $reflect->newInstanceArgs($parameters);
+		}
+		return null;
 	}
 }
 

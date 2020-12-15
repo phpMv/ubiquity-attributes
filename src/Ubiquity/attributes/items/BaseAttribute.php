@@ -15,9 +15,8 @@ use Ubiquity\utils\base\UArray;
 abstract class BaseAttribute {
 	use BaseAnnotationTrait;
 
-	protected function asAnnotation(): string {
-		$fields = $this->getPropertiesAndValues();
-		return UArray::asPhpAttribute($fields);
+	public function asAnnotation(): string {
+		return $this->__toString();
 	}
 
 	public function getNamespace(): string {
@@ -25,7 +24,8 @@ abstract class BaseAttribute {
 	}
 
 	public function __toString(): string {
-		$extsStr = $this->asAnnotation();
+		$fields = $this->getPropertiesAndValues();
+		$extsStr = UArray::asPhpAttribute($fields);
 		$className = (new \ReflectionClass($this))->getShortName();
 		return '#[' . $className . $extsStr . ']';
 	}
