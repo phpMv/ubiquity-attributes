@@ -26,7 +26,7 @@ class Route extends BaseAttribute {
 
 	public string $path;
 	public array $methods;
-	public string $name;
+	public ?string $name;
 	public bool $cache;
 	public int $duration;
 	public bool $inherited;
