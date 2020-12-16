@@ -71,12 +71,13 @@ class AttributesEngine implements AnnotationsEngineInterface {
 
 	public function getAnnotationsStr(array $annotations, string $prefix = "\t"): string {
 		$annotationsStr = '';
-		if (sizeof($this->annotations) > 0) {
+		$size = \count($this->annotations);
+		if ($size > 0) {
 			$annotationsStr = $prefix;
 			\array_walk($annotations, function ($item) {
 				return $item . '';
 			});
-			if (\sizeof($annotations) > 1) {
+			if ($size > 1) {
 				$annotationsStr .= "\n{$prefix}" . implode("\n{$prefix}", $annotations);
 			} else {
 				$annotationsStr .= "\n{$prefix}" . \end($annotations);
