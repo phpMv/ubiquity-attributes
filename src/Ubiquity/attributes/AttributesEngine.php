@@ -3,9 +3,11 @@
 namespace Ubiquity\attributes;
 
 use Ubiquity\annotations\AnnotationsEngineInterface;
+use Ubiquity\attributes\items\Column;
 use Ubiquity\attributes\items\Database;
 use Ubiquity\attributes\items\di\Autowired;
 use Ubiquity\attributes\items\di\Injected;
+use Ubiquity\attributes\items\Id;
 use Ubiquity\attributes\items\JoinColumn;
 use Ubiquity\attributes\items\JoinTable;
 use Ubiquity\attributes\items\ManyToMany;
