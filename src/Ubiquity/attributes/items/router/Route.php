@@ -34,7 +34,7 @@ class Route extends BaseAttribute {
 	public array $requirements;
 	public int $priority;
 
-	public function __construct(string $path = '', array $methods = [], string $name = null, bool $cache = false, int $duration = 0, bool $inherited = false, bool $automated = false, array $requirements = [], int $priority = 0) {
+	public function __construct(string $path = '', array $methods = [], ?string $name = null, ?bool $cache = false, ?int $duration = 0, ?bool $inherited = false, ?bool $automated = false, ?array $requirements = [], int $priority = 0) {
 		$this->path = $path;
 		$this->methods = $methods;
 		$this->name = $name;
