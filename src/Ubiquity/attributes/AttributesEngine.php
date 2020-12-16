@@ -3,11 +3,28 @@
 namespace Ubiquity\attributes;
 
 use Ubiquity\annotations\AnnotationsEngineInterface;
+use Ubiquity\attributes\items\Database;
+use Ubiquity\attributes\items\di\Autowired;
+use Ubiquity\attributes\items\di\Injected;
 use Ubiquity\attributes\items\JoinColumn;
 use Ubiquity\attributes\items\JoinTable;
 use Ubiquity\attributes\items\ManyToMany;
 use Ubiquity\attributes\items\ManyToOne;
 use Ubiquity\attributes\items\OneToMany;
+use Ubiquity\attributes\items\rest\Authorization;
+use Ubiquity\attributes\items\rest\Rest;
+use Ubiquity\attributes\items\router\Delete;
+use Ubiquity\attributes\items\router\Get;
+use Ubiquity\attributes\items\router\Options;
+use Ubiquity\attributes\items\router\Patch;
+use Ubiquity\attributes\items\router\Post;
+use Ubiquity\attributes\items\router\Put;
+use Ubiquity\attributes\items\router\Route;
+use Ubiquity\attributes\items\Table;
+use Ubiquity\attributes\items\Transformer;
+use Ubiquity\attributes\items\Transient;
+use Ubiquity\attributes\items\Validator;
+use Ubiquity\attributes\items\Yuml;
 
 class AttributesEngine implements AnnotationsEngineInterface {
 
@@ -48,7 +65,23 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			'manyToMany' => ManyToMany::class,
 			'manyToOne' => ManyToOne::class,
 			'oneToMany' => OneToMany::class,
-			'route' => Route::class
+			'table' => Table::class,
+			'database' => Database::class,
+			'transient' => Transient::class,
+			'yuml' => Yuml::class,
+			'transformer' => Transformer::class,
+			'validator' => Validator::class,
+			'route' => Route::class,
+			'get' => Get::class,
+			'post' => Post::class,
+			'put' => Put::class,
+			'patch' => Patch::class,
+			'delete' => Delete::class,
+			'options' => Options::class,
+			'rest' => Rest::class,
+			'authorization' => Authorization::class,
+			'autowired' => Autowired::class,
+			'injected' => Injected::class
 		];
 	}
 
