@@ -53,21 +53,7 @@ class Validator extends BaseAttribute {
 		}
 	}
 
-	/**
-	 * @param string $type
-	 * @param string|null $ref
-	 * @param array|null $constraints
-	 * @return Validator
-	 * @throws \Exception
-	 */
-	public static function initializeFromModel(string $type, ?string $ref = null, ?array $constraints = []): Validator {
-		if (isset ($ref)) {
-			$constraints ['ref'] = $ref;
-		}
-		return new Validator ($type, $constraints);
-	}
-
-	protected function asAnnotation() {
+	public function asAnnotation(): string {
 		$fields = $this->getPropertiesAndValues();
 		$result = [];
 		$result [] = $fields ["type"];

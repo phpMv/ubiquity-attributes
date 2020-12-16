@@ -3,6 +3,7 @@
 namespace Ubiquity\attributes;
 
 use Ubiquity\annotations\AnnotationsEngineInterface;
+use Ubiquity\attributes\items\JoinColumn;
 use Ubiquity\attributes\items\JoinTable;
 use Ubiquity\attributes\items\ManyToMany;
 use Ubiquity\attributes\items\ManyToOne;
@@ -83,6 +84,22 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			$annotationsStr .= "\n";
 		}
 		return $annotationsStr;
+	}
+
+	public static function isManyToOne(object $annotation): bool {
+		return $annotation instanceof JoinColumn;
+	}
+
+	public static function isMany(object $annotation): bool {
+		return ($annotation instanceof OneToMany) || ($annotation instanceof ManyToMany);
+	}
+
+	public function is(string $key, object $annotation): bool {
+		$class = self::$registry[$key] ?? null;
+		if ($class !== null) {
+			return $annotation instanceof $class;
+		}
+		return false;
 	}
 }
 
