@@ -25,7 +25,7 @@ class Route extends BaseAttribute {
 	use BaseAnnotationTrait;
 
 	public string $path;
-	public array $methods;
+	public ?array $methods;
 	public ?string $name;
 	public bool $cache;
 	public int $duration;
@@ -34,8 +34,8 @@ class Route extends BaseAttribute {
 	public array $requirements;
 	public int $priority;
 
-	public function __construct(string $path = '', array $methods = [], ?string $name = null, ?bool $cache = false, ?int $duration = 0, ?bool $inherited = false, ?bool $automated = false, ?array $requirements = [], int $priority = 0) {
-		$this->path = $path;
+	public function __construct(string $path = '', ?array $methods = null, ?string $name = null, ?bool $cache = false, ?int $duration = 0, ?bool $inherited = false, ?bool $automated = false, ?array $requirements = [], int $priority = 0) {
+		$this->path = $path ?? '';
 		$this->methods = $methods;
 		$this->name = $name;
 		$this->cache = $cache;
@@ -44,6 +44,14 @@ class Route extends BaseAttribute {
 		$this->automated = $automated;
 		$this->requirements = $requirements;
 		$this->priority = $priority;
+	}
+
+	public function getPropertiesAndValues($props = null) {
+		$r = parent::getPropertiesAndValues($props);
+		if (is_subclass_of($this, Route::class)) {
+			unset($r['methods']);
+		}
+		return $r;
 	}
 }
 
