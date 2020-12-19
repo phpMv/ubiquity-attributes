@@ -2,6 +2,8 @@
 
 namespace Ubiquity\attributes\items;
 
+use Attribute;
+
 /**
  * Annotation JoinColumn.
  * usages :
@@ -15,9 +17,10 @@ namespace Ubiquity\attributes\items;
 class JoinColumn extends Column {
 	public string $className;
 	public string $referencedColumnName;
-	public function __construct(string $name,string $className,string $referencedColumnName){
+
+	public function __construct(string $name, string $className, string $referencedColumnName) {
 		parent::__construct($name);
-	    $this->className=$className;
-		$this->referencedColumnName=$referencedColumnName;
+		$this->className = $className;
+		$this->referencedColumnName = $referencedColumnName;
 	}
 }
