@@ -106,7 +106,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 
 	public function getAnnotationsStr(array $annotations, string $prefix = "\t"): string {
 		$annotationsStr = '';
-		$size = \count(annotations);
+		$size = \count($annotations);
 		if ($size > 0) {
 			$annotationsStr = $prefix;
 			\array_walk($annotations, function ($item) {
