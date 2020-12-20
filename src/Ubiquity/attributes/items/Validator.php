@@ -33,13 +33,13 @@ class Validator extends BaseAttribute {
 	/**
 	 * Validator constructor.
 	 * @param string $type
-	 * @param string $message
-	 * @param string $severity
-	 * @param string $group
-	 * @param string|array $constraints
+	 * @param string|array|null $constraints
+	 * @param string|null $message
+	 * @param string|null $severity
+	 * @param string|null $group
 	 * @throws \Exception
 	 */
-	public function __construct(string $type, string|array $constraints, string $message, string $severity, string $group) {
+	public function __construct(string $type, null|string|array $constraints = null, ?string $message = null, ?string $severity = null, ?string $group = null) {
 		if (!isset (ValidatorsManager::$validatorTypes [$type])) {
 			throw new \Exception ('This type does not exists : ' . $type);
 		}
