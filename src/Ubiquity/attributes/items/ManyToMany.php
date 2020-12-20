@@ -16,16 +16,16 @@ use Attribute;
  * @version 1.0.0
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class ManyToMany extends BaseAttibute {
+class ManyToMany extends BaseAttribute {
 	use BaseAnnotationTrait;
 	
 	public string $targetEntity;
 	public ?string $inversedBy;
 	public ?string $mappedBy;
-	
-	public function __construct(string $targetEntity,?string $inversedBy=null,?string $mappedBy=null) {
-		$this->targetEntity=$targetEntity;
-		$this->inversedBy=$inversedBy;
-		$this->mappedBy=$mappedBy;
+
+	public function __construct(string $targetEntity, ?string $inversedBy = null, ?string $mappedBy = null) {
+		$this->targetEntity = $targetEntity;
+		$this->inversedBy = $inversedBy;
+		$this->mappedBy = $mappedBy;
 	}
 }
