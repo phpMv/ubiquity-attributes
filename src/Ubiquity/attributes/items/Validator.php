@@ -2,6 +2,7 @@
 
 namespace Ubiquity\attributes\items;
 
+use Ubiquity\annotations\BaseAnnotationTrait;
 use Ubiquity\contents\validation\ValidatorsManager;
 use Ubiquity\utils\base\UArray;
 use Attribute;
