@@ -18,15 +18,15 @@ use Attribute;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class JoinTable extends BaseAttribute {
 	use BaseAnnotationTrait;
-	
+
 	public string $name;
-	public string $joinColumns;
-	public string $inverseJoinColumns;
-	
-	public function __construct(string $name,string $joinColumns,string $inverseJoinColumns){
-		$this->name=$name;
-		$this->joinColumns=$joinColumns;
-		$this->inverseJoinColumns=$inverseJoinColumns;
+	public ?string $joinColumns;
+	public ?string $inverseJoinColumns;
+
+	public function __construct(string $name, ?string $joinColumns = null, ?string $inverseJoinColumns = null) {
+		$this->name = $name;
+		$this->joinColumns = $joinColumns;
+		$this->inverseJoinColumns = $inverseJoinColumns;
 	}
-	
+
 }
