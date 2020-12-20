@@ -25,10 +25,10 @@ class Validator extends BaseAttribute {
 	use BaseAnnotationTrait;
 
 	public string $type;
-	public string $message;
-	public string $severity;
-	public string $group;
-	public array $constraints = [];
+	public ?string $message;
+	public ?string $severity;
+	public ?string $group;
+	public ?array $constraints = [];
 
 	/**
 	 * Validator constructor.
