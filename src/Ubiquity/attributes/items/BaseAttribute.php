@@ -15,6 +15,10 @@ use Ubiquity\utils\base\UArray;
 abstract class BaseAttribute {
 	use BaseAnnotationTrait;
 
+	public function __construct() {
+
+	}
+
 	public function asAnnotation(): string {
 		return $this->__toString();
 	}
