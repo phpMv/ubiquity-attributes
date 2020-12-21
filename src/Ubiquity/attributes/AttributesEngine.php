@@ -27,6 +27,7 @@ use Ubiquity\attributes\items\Transformer;
 use Ubiquity\attributes\items\Transient;
 use Ubiquity\attributes\items\Validator;
 use Ubiquity\attributes\items\Yuml;
+use Ubiquity\creator\HasUsesTrait;
 
 class AttributesEngine implements AnnotationsEngineInterface {
 
@@ -95,10 +96,12 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		\array_merge(self::$registry, $nameClasses);
 	}
 
-	public function getAnnotation(object $container, string $key, array $parameters = []): ?object {
+	public function getAnnotation(?object $container, string $key, array $parameters = []): ?object {
 		if (isset(self::$registry[$key])) {
 			$classname = self::$registry[$key];
-			$container->addUse($classname);
+			if (isset($container) && ($container instanceof HasUsesTrait)) {
+				$container->addUse($classname);
+			}
 			$reflect = new \ReflectionClass($classname);
 			return $reflect->newInstanceArgs($parameters);
 		}
