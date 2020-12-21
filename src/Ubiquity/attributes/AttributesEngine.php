@@ -118,7 +118,6 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			} else {
 				$annotationsStr .= "\n{$prefix}" . \end($annotations);
 			}
-			$annotationsStr .= "\n";
 		}
 		return $annotationsStr;
 	}
