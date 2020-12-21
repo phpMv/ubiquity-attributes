@@ -32,8 +32,6 @@ class AttributesEngine implements AnnotationsEngineInterface {
 
 	protected static array $registry;
 
-	protected array $uses;
-
 	protected function attributesNewInstances(array $attributes): array {
 		$result = [];
 		foreach ($attributes as $attribute) {
@@ -87,7 +85,6 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			'autowired' => Autowired::class,
 			'injected' => Injected::class
 		];
-		$this->uses = [];
 	}
 
 	public function getAnnotationByKey(?string $key = null): ?string {
@@ -98,10 +95,10 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		\array_merge(self::$registry, $nameClasses);
 	}
 
-	public function getAnnotation(string $key, array $parameters = []): ?object {
+	public function getAnnotation(object $container, string $key, array $parameters = []): ?object {
 		if (isset(self::$registry[$key])) {
 			$classname = self::$registry[$key];
-			$this->uses[$classname] = true;
+			$container->addUse($classname);
 			$reflect = new \ReflectionClass($classname);
 			return $reflect->newInstanceArgs($parameters);
 		}
@@ -140,10 +137,6 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			return $annotation instanceof $class;
 		}
 		return false;
-	}
-
-	public function getUses(): array {
-		return \array_keys($this->uses);
 	}
 }
 
