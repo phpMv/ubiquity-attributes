@@ -28,7 +28,7 @@ class Validator extends BaseAttribute {
 	public ?string $message;
 	public ?string $severity;
 	public ?string $group;
-	public ?array $constraints = [];
+	public ?array $constraints;
 
 	/**
 	 * Validator constructor.
@@ -39,7 +39,7 @@ class Validator extends BaseAttribute {
 	 * @param string|null $group
 	 * @throws \Exception
 	 */
-	public function __construct(string $type, null|string|array $constraints = null, ?string $message = null, ?string $severity = null, ?string $group = null) {
+	public function __construct(string $type, null|string|array $constraints = ['ref' => false], ?string $message = null, ?string $severity = null, ?string $group = null) {
 		if (!isset (ValidatorsManager::$validatorTypes [$type])) {
 			throw new \Exception ('This type does not exists : ' . $type);
 		}
@@ -47,7 +47,7 @@ class Validator extends BaseAttribute {
 		$this->message = $message;
 		$this->severity = $severity;
 		$this->group = $group;
-		if (!\is_array($constraints)) {
+		if ($constraints && !\is_array($constraints)) {
 			$this->constraints['ref'] = $constraints;
 		} else {
 			$this->constraints = $constraints;
