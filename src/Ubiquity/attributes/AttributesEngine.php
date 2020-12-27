@@ -139,5 +139,13 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		}
 		return false;
 	}
+
+	public function registerAcls(): void {
+		\array_merge(self::$registry, [
+			'allow' => \Ubiquity\attributes\items\acl\Allow::class,
+			'resource' => \Ubiquity\attributes\items\acl\Resource::class,
+			'permission' => \Ubiquity\attributes\items\acl\Permission::class
+		]);
+	}
 }
 

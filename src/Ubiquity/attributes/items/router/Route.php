@@ -12,7 +12,7 @@ use Ubiquity\attributes\items\BaseAttribute;
  * - #[Route("routePath")] default path: ""
  * - #[Route(path: "routePath")]
  * - #[Route("routePath",methods:["routeMethods"])]
- * - #[Route("routePath",cache: true,duration: intValue)]
+ * - #[Route("routePath",cache: true, duration: intValue)]
  * - #[Route("routePath",inherited: true)]
  * - #[Route("routePath",automated: true)]
  * - #[Route("routePath",requirements: ["member"=>"regExpr"])]
@@ -48,7 +48,7 @@ class Route extends BaseAttribute {
 
 	public function getPropertiesAndValues($props = null) {
 		$r = parent::getPropertiesAndValues($props);
-		if (is_subclass_of($this, Route::class)) {
+		if (\is_subclass_of($this, Route::class)) {
 			unset($r['methods']);
 		}
 		return $r;
