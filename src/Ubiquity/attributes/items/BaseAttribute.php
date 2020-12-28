@@ -27,6 +27,17 @@ abstract class BaseAttribute {
 		return (new \ReflectionClass($this))->getNamespaceName();
 	}
 
+	protected function getDefaultParameters(): array {
+		$r = new \ReflectionMethod(get_class($this), '__construct');
+		$result = [];
+		foreach ($r->getParameters() as $param) {
+			if ($param->isOptional() && $param->isDefaultValueAvailable()) {
+				$result[$param->getName()] = $param->getDefaultValue();
+			}
+		}
+		return $result;
+	}
+
 	public function __toString(): string {
 		$fields = $this->getPropertiesAndValues();
 		$extsStr = UArray::asPhpAttribute($fields);
