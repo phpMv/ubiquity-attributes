@@ -43,19 +43,28 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	public function getAnnotsOfClass(string $class, ?string $annotationType = null): array {
 		$reflect = new \ReflectionClass($class);
 		$annotClass = $this->getAnnotationByKey($annotationType);
-		return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		if (isset($annotClass)) {
+			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		}
+		return [];
 	}
 
 	public function getAnnotsOfMethod(string $class, string $method, ?string $annotationType = null): array {
 		$reflect = new \ReflectionMethod($class, $method);
 		$annotClass = $this->getAnnotationByKey($annotationType);
-		return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		if (isset($annotClass)) {
+			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		}
+		return [];
 	}
 
 	public function getAnnotsOfProperty(string $class, string $property, ?string $annotationType = null): array {
 		$reflect = new \ReflectionProperty($class, $property);
 		$annotClass = $this->getAnnotationByKey($annotationType);
-		return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		if (isset($annotClass)) {
+			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+		}
+		return [];
 	}
 
 	public function start(string $cacheDirectory): void {
@@ -92,7 +101,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	}
 
 	public function registerAnnotations(array $nameClasses): void {
-		\array_merge(self::$registry, $nameClasses);
+		self::$registry = \array_merge(self::$registry, $nameClasses);
 	}
 
 	public function getAnnotation(?object $container, string $key, array $parameters = []): ?object {
@@ -141,7 +150,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 	}
 
 	public function registerAcls(): void {
-		\array_merge(self::$registry, [
+		self::$registry = \array_merge(self::$registry, [
 			'allow' => \Ubiquity\attributes\items\acl\Allow::class,
 			'resource' => \Ubiquity\attributes\items\acl\Resource::class,
 			'permission' => \Ubiquity\attributes\items\acl\Permission::class
