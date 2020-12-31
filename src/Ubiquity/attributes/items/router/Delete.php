@@ -2,6 +2,8 @@
 
 namespace Ubiquity\attributes\items\router;
 
+use Attribute;
+
 /**
  * Defines a route with the `delete` method
  * Ubiquity\attributes\items\router$Post

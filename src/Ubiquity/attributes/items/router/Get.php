@@ -6,6 +6,8 @@
 
 namespace Ubiquity\attributes\items\router;
 
+use Attribute;
+
 /**
  * Defines a route with the `get` method
  * Ubiquity\attributes\items\router$Get
