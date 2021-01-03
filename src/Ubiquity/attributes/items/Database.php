@@ -1,7 +1,9 @@
 <?php
+
 namespace Ubiquity\attributes\items;
 
 use Ubiquity\annotations\BaseAnnotationTrait;
+use Attribute;
 
 /**
  * Annotation Database.
