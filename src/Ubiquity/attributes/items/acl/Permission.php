@@ -22,7 +22,7 @@ use Ubiquity\attributes\items\BaseAttribute;
 class Permission extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public string|int $name;
+	public string|int|null $name;
 
 	public ?int $level;
 
