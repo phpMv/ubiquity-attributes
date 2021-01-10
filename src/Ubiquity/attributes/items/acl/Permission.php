@@ -13,6 +13,7 @@ use Ubiquity\attributes\items\BaseAttribute;
  * - #[Permission("permissionName",permissionLevel)]
  * - #[Permission(name: "permissionName")]
  * - #[Permission(name: "permissionName",level: permissionLevel)]
+ * - #[Permission(permissionLevel)]
  *
  * @author jc
  * @version 1.0.0
@@ -21,16 +22,16 @@ use Ubiquity\attributes\items\BaseAttribute;
 class Permission extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public string $name;
+	public string|int $name;
 
 	public ?int $level;
 
 	/**
 	 * Permission constructor.
-	 * @param string $name
+	 * @param string|int $name
 	 * @param int|null $level
 	 */
-	public function __construct(string $name, ?int $level = 0) {
+	public function __construct(string|int $name, ?int $level = 0) {
 		$this->name = $name;
 		$this->level = $level;
 	}
