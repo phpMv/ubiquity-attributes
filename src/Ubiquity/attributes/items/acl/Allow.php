@@ -21,7 +21,7 @@ use Ubiquity\attributes\items\BaseAttribute;
 class Allow extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public string $role;
+	public string|array $role;
 
 	public ?string $permission;
 
@@ -29,11 +29,11 @@ class Allow extends BaseAttribute {
 
 	/**
 	 * Allow constructor.
-	 * @param string $role
+	 * @param string|array $role
 	 * @param string|null $resource
 	 * @param string|null $permission
 	 */
-	public function __construct(string $role, ?string $resource = null, ?string $permission = null) {
+	public function __construct(string|array $role, ?string $resource = null, ?string $permission = null) {
 		$this->role = $role;
 		$this->resource = $resource;
 		$this->permission = $permission;
