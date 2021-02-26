@@ -13,19 +13,19 @@ use Ubiquity\attributes\items\BaseAttribute;
  * - #[Rest(resource: "modelClassname")]
  *
  * @author jc
- * @version 1.0.0
+ * @version 1.0.1
  */
 #[Attribute(Attribute::TARGET_CLASS)]
 class Rest extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public string $resource;
+	public ?string $resource;
 
 	/**
 	 * Rest constructor.
-	 * @param string $resource
+	 * @param ?string $resource
 	 */
-	public function __construct(string $resource) {
+	public function __construct(?string $resource=null) {
 		$this->resource = $resource;
 	}
 
