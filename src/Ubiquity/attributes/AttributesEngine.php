@@ -40,31 +40,27 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		return $result;
 	}
 
-	public function getAnnotsOfClass(string $class, ?string $annotationType = null): array {
-		$reflect = new \ReflectionClass($class);
+	private function getAnnotsOf(\Reflector $reflector, ?string $annotationType = null): array {
+		if ($annotationType === null) {
+			return $this->attributesNewInstances($reflector->getAttributes());
+		}
 		$annotClass = $this->getAnnotationByKey($annotationType);
 		if (isset($annotClass)) {
-			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
+			return $this->attributesNewInstances($reflector->getAttributes($annotClass));
 		}
 		return [];
+	}
+
+	public function getAnnotsOfClass(string $class, ?string $annotationType = null): array {
+		return $this->getAnnotsOf(new \ReflectionClass($class), $annotationType);
 	}
 
 	public function getAnnotsOfMethod(string $class, string $method, ?string $annotationType = null): array {
-		$reflect = new \ReflectionMethod($class, $method);
-		$annotClass = $this->getAnnotationByKey($annotationType);
-		if (isset($annotClass)) {
-			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
-		}
-		return [];
+		return $this->getAnnotsOf(new \ReflectionMethod($class, $method), $annotationType);
 	}
 
 	public function getAnnotsOfProperty(string $class, string $property, ?string $annotationType = null): array {
-		$reflect = new \ReflectionProperty($class, $property);
-		$annotClass = $this->getAnnotationByKey($annotationType);
-		if (isset($annotClass)) {
-			return $this->attributesNewInstances($reflect->getAttributes($annotClass));
-		}
-		return [];
+		return $this->getAnnotsOf(new \ReflectionProperty($class, $property), $annotationType);
 	}
 
 	public function start(string $cacheDirectory): void {
@@ -157,4 +153,3 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		]);
 	}
 }
-
