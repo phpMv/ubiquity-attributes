@@ -137,6 +137,14 @@ class AttributesEngine implements AnnotationsEngineInterface {
 		return ($annotation instanceof OneToMany) || ($annotation instanceof ManyToMany);
 	}
 
+	public static function isOneToMany(object $annotation): bool {
+		return $annotation instanceof OneToMany;
+	}
+
+	public static function isManyToMany(object $annotation): bool {
+		return $annotation instanceof ManyToMany;
+	}
+
 	public function is(string $key, object $annotation): bool {
 		$class = self::$registry[$key] ?? null;
 		if ($class !== null) {
