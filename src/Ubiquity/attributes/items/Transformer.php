@@ -24,8 +24,8 @@ class Transformer extends BaseAttribute {
 		$this->name = $name;
 	}
 
-	public function isSameAs(BaseAnnotationTrait $annot): bool {
-		return \get_class($annot) === self::class && $this->name == $annot->name;
+	public function isSameAs($annot): bool {
+		return \get_class($annot) === Transformer::class && $this->name == $annot->name;
 	}
 
 }
