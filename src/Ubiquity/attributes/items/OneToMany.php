@@ -22,8 +22,9 @@ class OneToMany extends BaseAttribute {
 	public string $className;
 	public ?array $cascade;
 
-	public function __construct(string $mappedBy, string $className) {
+	public function __construct(string $mappedBy, string $className, ?array $cascade = null) {
 		$this->mappedBy = $mappedBy;
 		$this->className = $className;
+		$this->cascade = $cascade;
 	}
 }
