@@ -12,7 +12,7 @@ namespace Ubiquity\attributes\items\rest;
  */
 
 use Attribute;
-use Ubiquity\annotations\BaseAnnotation;
+use Ubiquity\annotations\BaseAnnotationTrait;
 use Ubiquity\attributes\items\BaseAttribute;
 
 /**
