@@ -2,6 +2,7 @@
 
 namespace Ubiquity\attributes\items\router;
 
+use Ubiquity\attributes\items\BaseAttribute;
 use Ubiquity\annotations\BaseAnnotationTrait;
 use Attribute;
 
