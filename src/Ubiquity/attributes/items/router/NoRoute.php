@@ -1,6 +1,6 @@
 <?php
 
-namespace Ubiquity\attributes\items;
+namespace Ubiquity\attributes\items\router;
 
 use Ubiquity\annotations\BaseAnnotationTrait;
 use Attribute;
