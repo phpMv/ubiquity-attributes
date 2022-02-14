@@ -12,7 +12,7 @@ use Attribute;
  * @author jc
  * @version 1.0.0
  */
-#[Attribute(Attribute::TARGET_PROPERTY)]
+#[Attribute(Attribute::TARGET_METHOD)]
 class NoRoute extends BaseAttribute {
 	use BaseAnnotationTrait;
 }
