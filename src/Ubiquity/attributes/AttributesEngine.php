@@ -12,6 +12,7 @@ use Ubiquity\attributes\items\JoinColumn;
 use Ubiquity\attributes\items\JoinTable;
 use Ubiquity\attributes\items\ManyToMany;
 use Ubiquity\attributes\items\ManyToOne;
+use Ubiquity\attributes\items\NoRoute;
 use Ubiquity\attributes\items\OneToMany;
 use Ubiquity\attributes\items\rest\Authorization;
 use Ubiquity\attributes\items\rest\Rest;
@@ -85,6 +86,7 @@ class AttributesEngine implements AnnotationsEngineInterface {
 			'patch' => Patch::class,
 			'delete' => Delete::class,
 			'options' => Options::class,
+			'noRoute' => NoRoute::class,
 			'rest' => Rest::class,
 			'authorization' => Authorization::class,
 			'autowired' => Autowired::class,
