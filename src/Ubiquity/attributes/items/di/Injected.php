@@ -21,15 +21,15 @@ use Ubiquity\attributes\items\BaseAttribute;
 class Injected extends BaseAttribute {
 	use BaseAnnotationTrait;
 
-	public string $name;
-	public string $code;
+	public ?string $name;
+	public ?string $code;
 
 	/**
 	 * Injected constructor.
-	 * @param string $name
-	 * @param string $code
+	 * @param null|string $name
+	 * @param null|string $code
 	 */
-	public function __construct(string $name, string $code) {
+	public function __construct(?string $name = null, ?string $code = null) {
 		$this->name = $name;
 		$this->code = $code;
 	}
