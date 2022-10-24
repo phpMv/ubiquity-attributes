@@ -12,7 +12,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "phpmv/ubiquity": "^2.4"
+    "phpmv/ubiquity": "^2.4 || dev-199-rfc-config-add-env-variables-and-profiles-to-config"
   },
   "license": "Apache-2.0",
   "authors": [
